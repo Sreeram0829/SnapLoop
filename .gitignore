@@ -1,0 +1,45 @@
+# Node.js
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+.env
+
+# Logs
+logs
+*.log
+log/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Build/Production
+dist/
+build/
+
+# Local uploads
+uploads/
+
+# VS Code
+.vscode/
+.history/
+
+# Coverage
+coverage/
+
+# Optional: ignore SQLite/local DB
+*.sqlite
+*.db
+
+# Optional: ignore compiled files
+*.tsbuildinfo
+
+# Ignore dotenv environment files
+.env.*
+!.env.example
+
+# Optional: system files
+*.swp
+*.swo

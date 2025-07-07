@@ -1,0 +1,186 @@
+:root {
+  --primary-color: #3897f0;
+  --gradient-start: #6dd5fa;
+  --gradient-end: #2980b9;
+  --border-color: #dbdbdb;
+  --text-color: #262626;
+  --dark-color: #00376b;
+  --input-bg: #fff;
+}
+
+body {
+  margin: 0;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background: linear-gradient(135deg, var(--gradient-start), var(--gradient-end));
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.auth-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem;
+  width: 100%;
+}
+
+.auth-card {
+  background: linear-gradient(to bottom right, rgba(255, 255, 255, 0.95), rgba(245, 245, 245, 0.9));
+  border: 1px solid var(--border-color);
+  border-radius: 16px;
+  padding: 2.5rem;
+  width: 100%;
+  max-width: 400px;
+  margin-bottom: 1rem;
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.1);
+  animation: fadeIn 0.5s ease-in-out;
+}
+
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.auth-card h1 {
+  background: linear-gradient(to right, var(--primary-color), #1e90ff);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  font-size: 2.2rem;
+  font-weight: 700;
+  text-align: center;
+  margin-bottom: 1.5rem;
+}
+
+.auth-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.2rem;
+}
+
+.auth-form input {
+  padding: 0.8rem;
+  padding-right: 2.5rem; /* 👈 extra space for toggle icon */
+  border-radius: 6px;
+  border: 1px solid var(--border-color);
+  font-size: 1rem;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+
+.auth-form input:focus {
+  border-color: var(--primary-color);
+  box-shadow: 0 0 0 2px rgba(56,151,240,0.15);
+  outline: none;
+}
+
+.auth-form button {
+  padding: 0.9rem;
+  background: linear-gradient(to right, var(--primary-color), #2575fc);
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-size: 1rem;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background 0.4s ease;
+}
+
+.auth-form button:hover {
+  background: linear-gradient(to right, #2575fc, #3897f0);
+}
+
+.divider {
+  text-align: center;
+  margin: 1rem 0;
+  color: #999;
+  display: flex;
+  align-items: center;
+}
+
+.divider::before,
+.divider::after {
+  content: '';
+  flex: 1;
+  border-bottom: 1px solid var(--border-color);
+}
+
+.divider::before {
+  margin-right: 0.75rem;
+}
+.divider::after {
+  margin-left: 0.75rem;
+}
+
+.fb-login {
+  display: inline-block;
+  color: #385185;
+  font-weight: 600;
+  text-decoration: none;
+  margin-top: 0.5rem;
+  transition: color 0.3s;
+}
+.fb-login:hover {
+  color: #2a3c69;
+}
+
+.forgot-password {
+  font-size: 0.9rem;
+  color: var(--dark-color);
+  text-decoration: none;
+  margin-top: 0.5rem;
+  transition: color 0.3s;
+}
+.forgot-password:hover {
+  color: #001f44;
+}
+
+.toggle-auth {
+  margin-top: 1.2rem;
+  font-size: 0.9rem;
+  color: #555;
+  text-align: center;
+}
+
+.toggle-auth a {
+  color: var(--primary-color);
+  font-weight: 600;
+  cursor: pointer;
+  transition: color 0.3s;
+}
+
+.toggle-auth a:hover {
+  color: #2575fc;
+}
+
+.password-wrapper {
+  position: relative;
+}
+
+.toggle-password {
+  position: absolute;
+  right: 12px;
+  top: 50%;
+  transform: translateY(-50%);
+  cursor: pointer;
+  color: #888;
+  font-size: 1rem;
+}
+
+.toggle-password:hover {
+  color: #444;
+}
+
+/* Responsive */
+@media (max-width: 450px) {
+  .auth-card {
+    padding: 1.8rem;
+  }
+  .auth-card h1 {
+    font-size: 1.8rem;
+  }
+}

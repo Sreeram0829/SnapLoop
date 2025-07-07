@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>SnapLoop | Messages</title>
+  <link rel="stylesheet" href="css/message.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"/>
+</head>
+<body>
+  <!-- Navbar -->
+ <!-- Navbar -->
+<header class="top-navbar">
+  <div class="logo">
+    <img src="http://localhost:5000/uploads/logo.jpg" alt="Logo" class="logo-img" />
+    <span>SnapLoop</span>
+  </div>
+  <nav class="nav-links">
+    <a href="index.html" class="active" title="Home"><i class="fa-solid fa-house"></i></a>
+    <a href="message.html" title="Messages"><i class="fa-solid fa-message"></i></a>
+    <a href="profile.html" title="Profile"><i class="fas fa-user"></i></a>
+    <a href="post.html" title="Create Post"><i class="fa-solid fa-circle-plus"></i></a>
+  </nav>
+</header>
+
+
+  <div class="message-app">
+    <!-- Sidebar -->
+    <aside class="chat-sidebar">
+      <h3>Inbox</h3>
+      <div class="chat-list" id="chatList"></div>
+    </aside>
+
+    <!-- Chat Window -->
+    <main class="chat-window">
+      <div class="chat-header" id="chatHeader">
+        <div class="user-info">
+          <img src="https://randomuser.me/api/portraits/lego/1.jpg" alt="User" id="chatAvatar" />
+          <div>
+            <h3 id="chatUsername">Select a Chat</h3>
+            <span id="chatStatus">Offline</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="chat-body" id="chatBody">
+        <p class="select-chat-placeholder">💬 Select a chat to start messaging</p>
+      </div>
+
+      <div class="chat-footer">
+        <input type="text" id="messageInput" placeholder="Type a message..." disabled />
+        <button id="sendMessageBtn" disabled><i class="fas fa-paper-plane"></i></button>
+      </div>
+    </main>
+  </div>
+
+  <script src="js/message.js"></script>
+</body>
+</html>

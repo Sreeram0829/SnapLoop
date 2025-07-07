@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>SnapLoop | Home</title>
+  <link rel="stylesheet" href="css/main.css"/>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"/>
+</head>
+<body>
+  <div class="app-container">
+    
+    <!-- Header/Navbar -->
+   <!-- Header/Navbar -->
+<header class="app-header">
+  <div class="logo">
+    <img src="http://localhost:5000/uploads/logo.jpg" alt="Logo" class="logo-img" />
+    <h1>SnapLoop</h1>
+  </div>
+
+  <div class="search-bar">
+    <input type="text" placeholder="Search..." />
+    <button><i class="fas fa-search"></i></button>
+  </div>
+
+  <nav class="nav-links">
+    <a href="index.html" class="active"><i class="fa-solid fa-house"></i></a>
+    <a href="message.html"><i class="fa-solid fa-message"></i></a>
+    <a href="profile.html"><i class="fas fa-user"></i></a>
+    <a href="post.html"><i class="fa-solid fa-circle-plus"></i></a>
+  </nav>
+</header>
+
+
+    <!-- Main Content -->
+    <main class="main-content">
+      
+      <!-- Stories -->
+      <div class="stories-container" id="stories">
+        <!-- Stories will load here -->
+      </div>
+
+      <!-- Posts Feed -->
+      <div class="posts-feed" id="postsFeed">
+        <!-- Posts will load here -->
+      </div>
+    </main>
+
+    <!-- Sidebar -->
+    <aside class="sidebar">
+      <div class="user-profile">
+        <img src="https://randomuser.me/api/portraits/men/11.jpg" alt="Profile" />
+        <div>
+          <h3>your.story</h3>
+          <p>Darshu Gandi</p>
+        </div>
+      </div>
+
+      <div class="suggestions">
+        <div class="suggestions-header">
+          <span>Suggestions For You</span>
+          <a href="#">See All</a>
+        </div>
+        <div class="suggested-users" id="suggestedUsers">
+          <!-- Suggested users will load here -->
+        </div>
+      </div>
+
+      <footer class="sidebar-footer">
+        <p>© 2025 SnapLoop</p>
+      </footer>
+    </aside>
+  </div>
+
+  <script>
+   const storyData = [
+  { username: "Your Story", image: "http://localhost:5000/uploads/default.jpg", isYou: true },
+  { username: "daily.diary", image: "https://randomuser.me/api/portraits/men/12.jpg" },
+  { username: "ella.snap", image: "https://randomuser.me/api/portraits/women/10.jpg" },
+  { username: "sky.dreamer", image: "https://randomuser.me/api/portraits/men/18.jpg" },
+  { username: "coffee.rain", image: "https://randomuser.me/api/portraits/men/21.jpg" },
+  { username: "choco.luv", image: "https://randomuser.me/api/portraits/men/27.jpg" },
+  { username: "sun.shine", image: "https://randomuser.me/api/portraits/women/24.jpg" }
+];
+
+
+    const posts = [
+      {
+        user: { username: "mike.vibes", image: "https://randomuser.me/api/portraits/men/20.jpg" },
+        content: "Loving this peaceful place 🌿",
+        media: "https://images.unsplash.com/photo-1506744038136-46273834b3fb",
+        likes: 148,
+        comments: 23
+      },
+      {
+        user: { username: "ella.snap", image: "https://randomuser.me/api/portraits/women/30.jpg" },
+        content: "Throwback to beach days 🏖️",
+        media: "https://images.unsplash.com/photo-1523413651479-597eb2da0ad6",
+        likes: 245,
+        comments: 40
+      },
+      {
+        user: { username: "coffee.rain", image: "https://randomuser.me/api/portraits/men/14.jpg" },
+        content: "Late night thoughts 🌌",
+        media: "https://images.unsplash.com/photo-1506748686214-e9df14d4d9d0",
+        likes: 192,
+        comments: 33
+      }
+    ];
+
+    const suggestions = [
+      { username: "nina.tunes", image: "https://randomuser.me/api/portraits/women/22.jpg" },
+      { username: "david.wave", image: "https://randomuser.me/api/portraits/men/41.jpg" },
+      { username: "claire.sketch", image: "https://randomuser.me/api/portraits/women/32.jpg" },
+      { username: "lucas.day", image: "https://randomuser.me/api/portraits/men/38.jpg" }
+    ];
+
+    function loadStories() {
+      const stories = document.getElementById('stories');
+      storyData.forEach(story => {
+        const div = document.createElement('div');
+        div.className = 'story';
+        div.innerHTML = `
+          <div class="story-avatar">
+            <img src="${story.image}" alt="${story.username}" />
+          </div>
+          <span>${story.username}</span>
+        `;
+        stories.appendChild(div);
+      });
+    }
+
+    function loadPosts() {
+      const postsFeed = document.getElementById('postsFeed');
+      posts.forEach(post => {
+        const div = document.createElement('div');
+        div.className = 'post';
+        div.innerHTML = `
+          <div class="post-header">
+            <div class="post-user">
+              <img src="${post.user.image}" class="post-user-avatar" />
+              <span class="post-user-name">${post.user.username}</span>
+            </div>
+            <div class="post-options"><i class="fas fa-ellipsis-h"></i></div>
+          </div>
+          <img src="${post.media}" class="post-image" alt="Post Image" />
+          <div class="post-content">
+            <div class="post-actions">
+              <div class="post-actions-left">
+                <i class="far fa-heart"></i>
+                <i class="far fa-comment"></i>
+                <i class="far fa-paper-plane"></i>
+              </div>
+              <i class="far fa-bookmark"></i>
+            </div>
+            <div class="post-likes">${post.likes} likes</div>
+            <div class="post-caption"><span class="post-caption-username">${post.user.username}</span>${post.content}</div>
+            <div class="post-comments">View all ${post.comments} comments</div>
+            <div class="post-add-comment">
+              <input type="text" placeholder="Add a comment..." />
+              <button>Post</button>
+            </div>
+          </div>
+        `;
+        postsFeed.appendChild(div);
+      });
+    }
+
+    function loadSuggestions() {
+      const suggestionsDiv = document.getElementById('suggestedUsers');
+      suggestions.forEach(user => {
+        const div = document.createElement('div');
+        div.className = 'suggested-user';
+        div.innerHTML = `
+          <div class="suggested-user-info">
+            <img src="${user.image}" class="suggested-user-avatar" />
+            <span class="suggested-user-name">${user.username}</span>
+          </div>
+          <span class="suggested-user-follow">Follow</span>
+        `;
+        suggestionsDiv.appendChild(div);
+      });
+    }
+
+    window.onload = () => {
+      loadStories();
+      loadPosts();
+      loadSuggestions();
+    };
+  </script>
+</body>
+</html>

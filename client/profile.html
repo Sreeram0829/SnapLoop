@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Profile | SocialApp</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="css/main.css" />
+  <link rel="stylesheet" href="css/profile.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+  <header class="main-header">
+  <div class="header-left">
+    <img src="http://localhost:5000/uploads/logo.jpg" alt="Logo" class="logo-img" />
+    <h1>SnapLoop</h1>
+  </div>
+  <nav>
+    <a href="index.html">Home</a>
+    <a href="profile.html" class="active">Profile</a>
+    <button id="logoutBtn">Logout</button>
+  </nav>
+</header>
+
+
+  <main class="profile-content">
+    <section class="profile-header">
+      <div class="profile-avatar">
+        <img id="profileAvatar" src="" alt="Profile Picture" />
+      </div>
+      <div class="profile-info">
+        <h2 id="profileUsername"></h2>
+        <p id="profileBio"></p>
+        <div class="profile-stats">
+          <span><strong id="postsCount">0</strong> Posts</span>
+          <span><strong id="followersCount">0</strong> Followers</span>
+          <span><strong id="followingCount">0</strong> Following</span>
+        </div>
+        <button id="editProfileBtn">Edit Profile</button>
+      </div>
+    </section>
+
+    <!-- Tabs for media type -->
+    <div class="media-tabs">
+      <button class="media-tab active" data-type="image"><i class="fas fa-image"></i> Images</button>
+      <button class="media-tab" data-type="reel"><i class="fas fa-film"></i> Reels</button>
+      <button class="media-tab" data-type="video"><i class="fas fa-video"></i> Videos</button>
+    </div>
+
+    <section class="profile-posts-grid" id="profilePostsGrid"></section>
+  </main>
+
+  <!-- Edit Modal -->
+  <div class="modal" id="editProfileModal">
+    <div class="modal-content">
+      <span class="close-modal">&times;</span>
+      <h2>Edit Profile</h2>
+      <form id="editProfileForm" enctype="multipart/form-data">
+        <label for="editUsername">Username</label>
+        <input type="text" id="editUsername" name="username" required />
+
+        <label for="editFullName">Full Name</label>
+        <input type="text" id="editFullName" name="fullName" />
+
+        <label for="editBio">Bio</label>
+        <textarea id="editBio" name="bio" rows="3"></textarea>
+
+        <label for="editProfilePic">Change Profile Picture</label>
+        <input type="file" id="editProfilePic" name="profilePicture" accept="image/*" />
+
+        <button type="submit">Save Changes</button>
+      </form>
+    </div>
+  </div>
+
+  <script src="js/profile.js"></script>
+</body>
+</html>
