@@ -1,90 +1,205 @@
 # SnapLoop
 
-A modern social media web interface built with HTML, CSS, and JavaScript, inspired by popular social networking platforms.
+A full-stack social media web application designed to provide a modern social networking experience with user authentication, profiles, posts, stories, image uploads, and social interactions.
 
 ## Overview
 
-SnapLoop is a front-end social media interface designed to provide a familiar and responsive social networking experience. It includes a home feed with stories, posts, user suggestions, navigation, and basic interaction elements.
+SnapLoop is a full-stack social media platform built with a JavaScript-based frontend and a Node.js/Express backend. The application provides a social-media-style interface where users can interact with profiles, posts, stories, and other users.
 
-The project focuses on creating a clean social-media-style UI using vanilla web technologies.
+The project demonstrates full-stack development concepts including REST APIs, authentication, database management, file uploads, input validation, and frontend DOM manipulation.
 
 ## Features
 
-* **Stories Section** — Displays user stories with profile avatars
-* **Posts Feed** — Dynamically renders posts with images, captions, likes, and comments
-* **User Suggestions** — Displays suggested users with follow options
-* **Navigation Bar** — Home, messages, profile, and create-post navigation
-* **Search Bar** — Social-media-style search interface
-* **Post Interactions** — Like, comment, share, bookmark, and comment-input UI
-* **Responsive Layout** — Designed for a modern social media experience
-* **Dynamic Rendering** — Stories, posts, and suggestions are generated using JavaScript
+* **User Authentication** — Secure user registration and login
+* **User Profiles** — Profile information and user-focused pages
+* **Posts Feed** — Display posts with images, captions, likes, and comments
+* **Stories** — Social-media-style stories section
+* **Image Uploads** — Upload and manage user/post images
+* **User Suggestions** — Discover and follow suggested users
+* **Messaging Interface** — Social messaging functionality
+* **Search Interface** — Search-oriented navigation
+* **Authentication Tokens** — JWT-based authentication
+* **Password Security** — Password hashing using bcrypt
+* **Input Validation** — Server-side request validation
+* **REST API** — Backend API endpoints for application functionality
+* **MongoDB Database** — Persistent storage using MongoDB and Mongoose
+* **CORS Support** — Cross-origin communication between frontend and backend
 
 ## Tech Stack
 
-* **HTML5** — Page structure and semantic markup
-* **CSS3** — Layout, styling, and responsive design
-* **JavaScript** — Dynamic content rendering and DOM manipulation
-* **Font Awesome** — Icons and interface elements
+### Frontend
+
+* HTML5
+* CSS3
+* JavaScript
+* Font Awesome
+
+### Backend
+
+* Node.js
+* Express.js
+* MongoDB
+* Mongoose
+* JWT / JSON Web Tokens
+* bcryptjs
+* Multer
+* express-validator
+* CORS
+* dotenv
+
+## Architecture
+
+SnapLoop follows a client-server architecture:
+
+```text
+┌─────────────────────────────┐
+│          Frontend           │
+│      HTML / CSS / JS        │
+└──────────────┬──────────────┘
+               │
+               │ REST API
+               ▼
+┌─────────────────────────────┐
+│          Backend            │
+│      Node.js + Express      │
+└──────────────┬──────────────┘
+               │
+       ┌───────┴────────┐
+       ▼                ▼
+┌─────────────┐   ┌─────────────┐
+│   MongoDB   │   │    File     │
+│  + Mongoose │   │   Uploads   │
+└─────────────┘   └─────────────┘
+```
 
 ## Project Structure
 
 ```text
-snaploop/
-├── index.html
-├── css/
-│   └── main.css
-├── js/
+SnapLoop/
+│
+├── frontend/
+│   ├── index.html
+│   ├── message.html
+│   ├── profile.html
+│   ├── post.html
+│   ├── css/
+│   │   └── main.css
+│   └── js/
+│       └── ...
+│
+├── server/
+│   ├── app.js
+│   ├── package.json
+│   ├── routes/
+│   ├── controllers/
+│   ├── models/
+│   ├── middleware/
+│   ├── uploads/
 │   └── ...
-├── images/
-│   └── ...
+│
 └── README.md
 ```
 
-## How It Works
+## Installation
 
-The application uses JavaScript arrays to store sample stories, posts, and suggested users. On page load, JavaScript dynamically creates the corresponding UI elements and inserts them into the page.
+### Prerequisites
 
-### Example Data
+Make sure you have the following installed:
 
-The application maintains separate data structures for:
+* Node.js
+* npm
+* MongoDB
 
-* Stories
-* Posts
-* Suggested users
-
-These are rendered dynamically using DOM manipulation.
-
-## Getting Started
-
-### 1. Clone the repository
+### 1. Clone the Repository
 
 ```bash
 git clone <repository-url>
-cd snaploop
+cd SnapLoop
 ```
 
-### 2. Run the project
+### 2. Install Backend Dependencies
 
-Since SnapLoop is a front-end project, you can open `index.html` directly in a browser.
-For the best development experience, use a local development server such as VS Code Live Server.
+```bash
+cd server
+npm install
+```
 
+### 3. Configure Environment Variables
+
+Create a `.env` file in the server directory.
+
+Example:
+
+```env
+PORT=5000
+MONGODB_URI=your_mongodb_connection_string
+JWT_SECRET=your_jwt_secret
+```
+
+Add any additional environment variables required by the application.
+
+### 4. Start the Backend
+
+```bash
+node app.js
+```
+
+The backend will run on the configured port.
+
+### 5. Run the Frontend
+
+Open the frontend using a local development server such as VS Code Live Server.
+
+## Authentication
+
+SnapLoop uses JWT-based authentication for managing authenticated sessions.
+
+Passwords are securely hashed using `bcryptjs` before being stored, while JSON Web Tokens are used to authenticate protected API requests.
+
+## File Uploads
+
+Multer is used to handle multipart/form-data and image/file uploads.
+
+Uploaded assets can be served through the Express backend.
+
+## Data Validation
+
+The backend uses `express-validator` to validate incoming requests and help ensure that submitted user data meets the required format.
+
+## Database
+
+MongoDB is used as the application's database, with Mongoose providing schema definitions, data modeling, and database interaction.
 
 ## Future Improvements
 
 Possible future enhancements include:
 
-* User authentication
-* Real-time messaging
-* Database integration
-* Persistent posts and comments
-* Like/follow functionality
-* Image and video uploads
-* Backend API integration
-* User search
+* Real-time messaging using WebSockets
 * Notifications
+* Improved post recommendation algorithms
+* Video uploads
+* Stories expiration
+* Advanced search
+* Content moderation
+* Improved mobile responsiveness
+* Cloud-based media storage
+* Deployment with production-grade infrastructure
+
+## Learning Outcomes
+
+Through SnapLoop, the project demonstrates practical experience with:
+
+* Full-stack web development
+* REST API development
+* Node.js and Express.js
+* MongoDB database integration
+* JWT authentication
+* Password hashing
+* File upload handling
+* Server-side validation
+* Frontend UI development
+* Client-server communication
 
 ## License
-This project is intended for educational and portfolio purposes.
 
-```
-```
+This project is intended for educational and portfolio purposes.
